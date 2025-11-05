@@ -6,6 +6,18 @@ loom {
     accessWidenerPath = file("src/main/resources/vs_addon_template.accesswidener")
 }
 
+repositories {
+    maven { url = "https://mvn.devos.one/releases" } // Porting Lib releases
+    maven { url = "https://mvn.devos.one/snapshots" } // Create and several dependencies
+    maven { url = "https://maven.jamieswhiteshirt.com/libs-release" } // Reach Entity Attributes
+    maven { url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven" } // Forge Config API Port
+
+    maven { // Fabric ASM for Porting Lib
+        url = "https://jitpack.io/"
+        content { includeGroupAndSubgroups("com.github") }
+    }
+}
+
 dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
@@ -25,6 +37,12 @@ dependencies {
 
     api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10"
     api "org.jetbrains.kotlin:kotlin-reflect:1.9.10"
+
+    // Create
+    modCompileOnly("com.simibubi.create:create-fabric-$minecraft_version:$create_version")
+
+    // Extra Gauges
+    implementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}")
 }
 
 publishing {
