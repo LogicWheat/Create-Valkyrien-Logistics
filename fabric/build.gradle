@@ -57,7 +57,8 @@ dependencies {
     modCompileOnly("com.simibubi.create:create-fabric-$minecraft_version:$create_version")
 
     // Extra Gauges
-    implementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}")
+    //implementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}")
+    implementation "maven.modrinth:extra-gauges:${extra_gauges_version}"
 }
 
 processResources {
@@ -65,7 +66,7 @@ processResources {
 
 
     def props = project.properties
-    props['vs2_version'] = project.vs2_version.substring(0, project.vs2_version.indexOf('+'))
+    props['vs2_version'] = project.vs2_version
 
     filesMatching("fabric.mod.json") {
         expand props
