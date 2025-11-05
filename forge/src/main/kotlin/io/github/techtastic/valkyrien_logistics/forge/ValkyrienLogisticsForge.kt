@@ -5,15 +5,13 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
 import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics
 import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics.init
 import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics.initClient
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
+import thedarkcolour.kotlinforforge.KotlinModLoadingContext
 
 @Mod(ValkyrienLogistics.MOD_ID)
-class ValkyrienLogisticsForge(context: FMLJavaModLoadingContext) {
+class ValkyrienLogisticsForge {
     init {
-        context.modEventBus.addListener { event: FMLClientSetupEvent? ->
-            clientSetup(
-                event
-            )
+        KotlinModLoadingContext.get().getKEventBus().addListener { event: FMLClientSetupEvent? ->
+            clientSetup(event)
         }
         init()
     }
