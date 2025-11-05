@@ -57,8 +57,8 @@ dependencies {
     modCompileOnly("com.simibubi.create:create-fabric-$minecraft_version:$create_version")
 
     // Extra Gauges
-    //implementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}")
-    implementation "maven.modrinth:extra-gauges:${extra_gauges_version}"
+    modImplementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}") { transitive = false }
+    //implementation "maven.modrinth:extra-gauges:${extra_gauges_version}"
 }
 
 processResources {
