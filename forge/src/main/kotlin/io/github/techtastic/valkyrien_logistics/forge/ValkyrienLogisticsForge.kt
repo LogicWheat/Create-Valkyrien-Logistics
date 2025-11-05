@@ -1,15 +1,15 @@
-package io.github.techtastic.vs_addon_template.forge
+package io.github.techtastic.valkyrien_logistics.forge
 
 import net.minecraftforge.eventbus.api.IEventBus
 import net.minecraftforge.fml.common.Mod
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent
-import io.github.techtastic.vs_addon_template.VSAddonTemplateMod
-import io.github.techtastic.vs_addon_template.VSAddonTemplateMod.init
-import io.github.techtastic.vs_addon_template.VSAddonTemplateMod.initClient
+import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics
+import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics.init
+import io.github.techtastic.valkyrien_logistics.ValkyrienLogistics.initClient
 import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
-@Mod(VSAddonTemplateMod.MOD_ID)
-class VSAddonTemplateModForge {
+@Mod(ValkyrienLogistics.MOD_ID)
+class ValkyrienLogisticsForge {
     init {
         MOD_BUS.addListener { event: FMLClientSetupEvent? ->
             clientSetup(
