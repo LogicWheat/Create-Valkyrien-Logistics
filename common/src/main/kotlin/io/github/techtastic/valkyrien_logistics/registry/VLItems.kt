@@ -11,6 +11,7 @@ object VLItems {
     private val ITEMS = DeferredRegister.create(ValkyrienLogistics.MOD_ID, Registries.ITEM)
 
     val POSITION_GAUGE = ITEMS.register("position_gauge") { PanelBlockItem(PanelRegistry::getPositionPanel, Item.Properties()) }
+    val LINEAR_VELOCITY_GAUGE = ITEMS.register("linear_velocity_gauge") { PanelBlockItem(PanelRegistry::getLinearVelocityPanel, Item.Properties()) }
 
     fun register() {
         ITEMS.register()

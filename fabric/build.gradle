@@ -59,6 +59,9 @@ dependencies {
     // Extra Gauges
     modImplementation("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}") { transitive = false }
     //implementation "maven.modrinth:extra-gauges:${extra_gauges_version}"
+
+    compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.5.0"))
+    implementation(include("io.github.llamalad7:mixinextras-forge:0.5.0"))
 }
 
 processResources {

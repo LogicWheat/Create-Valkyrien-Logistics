@@ -3,11 +3,9 @@ package io.github.techtastic.valkyrien_logistics
 import com.mojang.blaze3d.systems.RenderSystem
 import com.mojang.blaze3d.vertex.PoseStack
 import com.simibubi.create.foundation.gui.AllIcons
-import dev.architectury.utils.Env
 import net.createmod.catnip.theme.Color
 import net.fabricmc.api.EnvType
 import net.fabricmc.api.Environment
-import net.liukrast.eg.EGConstants
 import net.liukrast.eg.mixin.AllIconsMixin
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.renderer.LightTexture
@@ -20,21 +18,21 @@ import net.minecraft.world.phys.Vec3
 class VLIcons(x: Int, y: Int) : AllIcons(x, y) {
     @Environment(EnvType.CLIENT)
     override fun bind() {
-        RenderSystem.setShaderTexture(0, AllIcons.ICON_ATLAS)
+        RenderSystem.setShaderTexture(0, ICON_ATLAS)
     }
 
     @Environment(EnvType.CLIENT)
     override fun render(graphics: GuiGraphics, x: Int, y: Int) {
         graphics.blit(
-            AllIcons.ICON_ATLAS, x, y, 0,
+            ICON_ATLAS, x, y, 0,
             (this as AllIconsMixin).iconX.toFloat(),
-            (this as AllIconsMixin).iconY.toFloat(), 16, 16, AllIcons.ICON_ATLAS_SIZE, AllIcons.ICON_ATLAS_SIZE
+            (this as AllIconsMixin).iconY.toFloat(), 16, 16, ICON_ATLAS_SIZE, ICON_ATLAS_SIZE
         )
     }
 
     @Environment(EnvType.CLIENT)
     override fun render(ms: PoseStack, buffer: MultiBufferSource, color: Int) {
-        val builder = buffer.getBuffer(RenderType.text(AllIcons.ICON_ATLAS))
+        val builder = buffer.getBuffer(RenderType.text(ICON_ATLAS))
         val matrix = ms.last().pose()
         val rgb = Color(color)
         val light = LightTexture.FULL_BRIGHT
@@ -46,10 +44,10 @@ class VLIcons(x: Int, y: Int) : AllIcons(x, y) {
         val iconX = (this as AllIconsMixin).iconX
         val iconY = (this as AllIconsMixin).iconY
 
-        val u1 = iconX * 1f / AllIcons.ICON_ATLAS_SIZE
-        val u2 = (iconX + 16) * 1f / AllIcons.ICON_ATLAS_SIZE
-        val v1 = iconY * 1f / AllIcons.ICON_ATLAS_SIZE
-        val v2 = (iconY + 16) * 1f / AllIcons.ICON_ATLAS_SIZE
+        val u1 = iconX * 1f / ICON_ATLAS_SIZE
+        val u2 = (iconX + 16) * 1f / ICON_ATLAS_SIZE
+        val v1 = iconY * 1f / ICON_ATLAS_SIZE
+        val v2 = (iconY + 16) * 1f / ICON_ATLAS_SIZE
 
         val cast = this as AllIconsMixin
 
@@ -60,23 +58,12 @@ class VLIcons(x: Int, y: Int) : AllIcons(x, y) {
     }
 
     companion object {
-        val ICON_ATLAS: ResourceLocation = EGConstants.id("textures/gui/icons.png")
+        val ICON_ATLAS: ResourceLocation = ResourceLocation(ValkyrienLogistics.MOD_ID, "textures/gui/icons.png")
         const val ICON_ATLAS_SIZE: Int = 64
 
-        private var x = 0
-        private var y = -1
-
-        val X = newRow()
-        val Y = next()
-        val Z = next()
-        val W = next()
-
-        private fun next(): VLIcons {
-            return VLIcons(++x, y)
-        }
-
-        private fun newRow(): VLIcons {
-            return VLIcons(0.also { x = it }, ++y)
-        }
+        val X = VLIcons(0, 0)
+        val Y = VLIcons(1, 0)
+        val Z = VLIcons(2, 0)
+        val W = VLIcons(3, 0)
     }
 }

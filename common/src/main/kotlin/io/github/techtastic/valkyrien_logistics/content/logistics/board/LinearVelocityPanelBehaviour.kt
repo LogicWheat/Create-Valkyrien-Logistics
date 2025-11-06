@@ -5,34 +5,31 @@ import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlockEntit
 import dev.engine_room.flywheel.lib.model.baked.PartialModel
 import io.github.techtastic.valkyrien_logistics.registry.VLItems
 import io.github.techtastic.valkyrien_logistics.registry.VLPartialModels
-import io.github.techtastic.valkyrien_logistics.util.ReflectionStuffs
-import net.liukrast.eg.api.logistics.board.PanelConnection
 import net.liukrast.eg.api.registry.PanelType
-import net.liukrast.eg.registry.EGPanelConnections
 import net.minecraft.network.chat.Component
 import net.minecraft.world.item.Item
 import org.valkyrienskies.mod.common.getShipObjectManagingPos
-import org.valkyrienskies.mod.common.util.toJOMLD
 
+class LinearVelocityPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
+    VectorPanelBehaviour(Component.translatable("create.logistics.velocity_panel"), type, be, slot) {
 
-class PositionPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
-    VectorPanelBehaviour(Component.translatable("create.logistics.position_panel"), type, be, slot) {
+    init {
+        this.onlyActiveWhen { world.getShipObjectManagingPos(pos) != null }
+    }
 
     override fun getOutput(): Int {
         val ship = world.getShipObjectManagingPos(pos)
-        val location = pos.toJOMLD()
-        ship?.transform?.shipToWorld?.transformPosition(location)
         return when(get()) {
-            VectorSelectionMode.X -> location.x.toInt()
-            VectorSelectionMode.Y -> location.y.toInt()
-            VectorSelectionMode.Z -> location.z.toInt()
+            VectorSelectionMode.X -> ship?.velocity?.x()?.toInt() ?: 0
+            VectorSelectionMode.Y -> ship?.velocity?.y()?.toInt() ?: 0
+            VectorSelectionMode.Z -> ship?.velocity?.z()?.toInt() ?: 0
             else -> 0
         }
     }
 
-    override fun getItem(): Item = VLItems.POSITION_GAUGE.get()
+    override fun getItem(): Item = VLItems.LINEAR_VELOCITY_GAUGE.get()
 
     override fun getModel(panelState: FactoryPanelBlock.PanelState, panelType: FactoryPanelBlock.PanelType): PartialModel =
-        VLPartialModels.POSITION_PANEL
+        VLPartialModels.LINEAR_VELOCITY_PANEL
 }
 

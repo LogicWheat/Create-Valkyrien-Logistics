@@ -3,6 +3,7 @@
   "package": "io.github.techtastic.valkyrien_logistics.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "MixinFactoryPanelConnectionHandler"
   ],
   "injectors": {
     "defaultRequire": 1
