@@ -44,6 +44,9 @@ dependencies {
     // Extra Gauges
     modCompileOnly("net.liukrast:extra_gauges-${minecraft_version}:${extra_gauges_version}") { transitive = false }
     //modCompileOnly "maven.modrinth:extra-gauges:${extra_gauges_version}"
+
+    // Cursed IK
+    modImplementation "net.minecraftforge:forge:$forge_version"
 }
 
 publishing {
