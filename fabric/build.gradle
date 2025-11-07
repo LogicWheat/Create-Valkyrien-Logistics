@@ -11,6 +11,9 @@ loom {
     accessWidenerPath = project(":common").loom.accessWidenerPath
 }
 
+String platform = String.valueOf(loader_platform).toLowerCase()
+version = minecraft_version + "-" + platform + "-" + mod_version
+
 configurations {
     common
     shadowCommon // Don't use shadow from the shadow plugin because we don't want IDEA to index this.
