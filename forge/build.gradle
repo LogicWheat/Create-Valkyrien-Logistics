@@ -160,3 +160,35 @@ publishing {
         }
     }
 }
+
+curseforge {
+    apiKey = System.getenv("CURSEFORGE_TOKEN") == null ? '' : System.getenv("CURSEFORGE_TOKEN")
+    project {
+        id = '1380349'
+        changelogType = 'markdown'
+        changelog = rootProject.file("changelog.md")
+        releaseType = 'release'
+        addGameVersion '1.20.1'
+        addGameVersion 'Forge'
+        addGameVersion 'NeoForge'
+
+        relations {
+            requiredDependency 'create'
+            requiredDependency 'create-extra-gauges'
+        }
+
+        mainArtifact(remapJar) {
+            displayName = "Create: Valkyrien Logistics - Forge - $mod_version"
+        }
+    }
+}
+
+modrinth {
+    loaders = ['forge','neoforge']
+    versionNumber = "$mod_version"
+    versionName = "Create: Valkyrien Logistics - Forge - $mod_version"
+    dependencies {
+        required.project 'create'
+        required.project 'extra-gauges'
+    }
+}
