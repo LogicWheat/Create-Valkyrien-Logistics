@@ -12,7 +12,7 @@ authors = ["${mod_author}"]
 description = '''
 ${mod_description}
 '''
-logoFile = "icon.png"
+logoFile = "assets/${mod_id}/logo.png"
 
 [[dependencies.${mod_id}]]
 modId = "forge"

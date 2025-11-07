@@ -1,0 +1,18 @@
+{
+  "itemGroup.valkyrien_logistics": "Valkyrien Logistics",
+
+  "vector_gauge.x": "X Value",
+  "vector_gauge.y": "Y Value",
+  "vector_gauge.z": "Z Value",
+  "vector_gauge.w": "W Value",
+  "create.logistics.vector_panel": "Choose a Value",
+  "create.logistics.vector_panel.string": "%d,%d,%d",
+  "create.logistics.quaternion_panel.string": "%d,%d,%d,%d",
+
+  "item.valkyrien_logistics.position_gauge": "Position Gauge",
+  "item.valkyrien_logistics.linear_velocity_gauge": "Linear Velocity Gauge",
+  "item.valkyrien_logistics.angular_velocity_gauge": "Angular Velocity Gauge",
+  "item.valkyrien_logistics.rotation_gauge": "Rotation Gauge",
+  "item.valkyrien_logistics.mass_gauge": "Mass Gauge",
+  "item.valkyrien_logistics.slug_gauge": "Slug Gauge"
+}

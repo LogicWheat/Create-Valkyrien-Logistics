@@ -5,29 +5,20 @@ import com.simibubi.create.content.logistics.factoryBoard.FactoryPanelBlockEntit
 import dev.engine_room.flywheel.lib.model.baked.PartialModel
 import io.github.techtastic.valkyrien_logistics.registry.VLItems
 import io.github.techtastic.valkyrien_logistics.registry.VLPartialModels
-import io.github.techtastic.valkyrien_logistics.util.ReflectionStuffs
-import net.liukrast.eg.api.logistics.board.PanelConnection
 import net.liukrast.eg.api.registry.PanelType
-import net.liukrast.eg.registry.EGPanelConnections
-import net.minecraft.network.chat.Component
 import net.minecraft.world.item.Item
-import org.valkyrienskies.mod.common.getShipObjectManagingPos
+import org.joml.Vector3dc
+import org.valkyrienskies.mod.common.getShipManagingPos
 import org.valkyrienskies.mod.common.util.toJOMLD
 
-
 class PositionPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
-    VectorPanelBehaviour(Component.translatable("create.logistics.position_panel"), type, be, slot) {
+    Vector3PanelBehaviour(type, be, slot) {
 
-    override fun getOutput(): Int {
-        val ship = world.getShipObjectManagingPos(pos)
+    override fun getVector(): Vector3dc {
+        val ship = world.getShipManagingPos(pos)
         val location = pos.toJOMLD()
         ship?.transform?.shipToWorld?.transformPosition(location)
-        return when(get()) {
-            VectorSelectionMode.X -> location.x.toInt()
-            VectorSelectionMode.Y -> location.y.toInt()
-            VectorSelectionMode.Z -> location.z.toInt()
-            else -> 0
-        }
+        return location
     }
 
     override fun getItem(): Item = VLItems.POSITION_GAUGE.get()

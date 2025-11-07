@@ -11,18 +11,18 @@ import org.joml.Vector3d
 import org.joml.Vector3dc
 import org.valkyrienskies.mod.common.getShipManagingPos
 
-class LinearVelocityPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
+class AngularVelocityPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
     Vector3PanelBehaviour(type, be, slot) {
 
     init {
         this.onlyActiveWhen { world.getShipManagingPos(pos) != null }
     }
 
-    override fun getVector(): Vector3dc = world.getShipManagingPos(pos)?.velocity ?: Vector3d()
+    override fun getVector(): Vector3dc = world.getShipManagingPos(pos)?.omega ?: Vector3d()
 
-    override fun getItem(): Item = VLItems.LINEAR_VELOCITY_GAUGE.get()
+    override fun getItem(): Item = VLItems.ANGULAR_VELOCITY_GAUGE.get()
 
     override fun getModel(panelState: FactoryPanelBlock.PanelState, panelType: FactoryPanelBlock.PanelType): PartialModel =
-        VLPartialModels.LINEAR_VELOCITY_PANEL
+        VLPartialModels.ANGULAR_VELOCITY_PANEL
 }
 

@@ -1,0 +1,7 @@
+{
+  "parent": "extra_gauges:block/template_gauge",
+  "textures": {
+    "particle": "valkyrien_logistics:block/rotation_panel",
+    "texture": "valkyrien_logistics:block/rotation_panel"
+  }
+}

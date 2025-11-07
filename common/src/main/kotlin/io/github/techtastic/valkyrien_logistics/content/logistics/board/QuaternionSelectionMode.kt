@@ -5,10 +5,11 @@ import com.simibubi.create.foundation.gui.AllIcons
 import io.github.techtastic.valkyrien_logistics.VLIcons
 import net.createmod.catnip.lang.Lang
 
-enum class VectorSelectionMode(private val newIcon: AllIcons): INamedIconOptions {
+enum class QuaternionSelectionMode(private val newIcon: AllIcons): INamedIconOptions {
     X(VLIcons.X),
     Y(VLIcons.Y),
-    Z(VLIcons.Z);
+    Z(VLIcons.Z),
+    W(VLIcons.W);
 
     private val translationKey: String = "vector_gauge.${Lang.asId(this.name)}"
 
