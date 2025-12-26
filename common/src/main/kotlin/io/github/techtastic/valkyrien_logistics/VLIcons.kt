@@ -14,7 +14,6 @@ import net.minecraft.client.renderer.RenderType
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.phys.Vec3
 
-
 class VLIcons(x: Int, y: Int) : AllIcons(x, y) {
     @Environment(EnvType.CLIENT)
     override fun bind() {

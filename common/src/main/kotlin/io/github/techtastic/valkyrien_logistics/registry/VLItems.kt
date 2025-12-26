@@ -25,6 +25,7 @@ object VLItems {
                     output.accept(ROTATION_GAUGE.get())
                     output.accept(MASS_GAUGE.get())
                     output.accept(SLUG_GAUGE.get())
+                    output.accept(EULER_GAUGE.get())
                 }
                 .build()
         }
@@ -36,6 +37,7 @@ object VLItems {
     val ROTATION_GAUGE = ITEMS.register("rotation_gauge") { PanelBlockItem(PanelRegistry::getRotationPanel, Item.Properties()) }
     val MASS_GAUGE = ITEMS.register("mass_gauge") { PanelBlockItem(PanelRegistry::getMassPanel, Item.Properties()) }
     val SLUG_GAUGE = ITEMS.register("slug_gauge") { PanelBlockItem(PanelRegistry::getSlugPanel, Item.Properties()) }
+    val EULER_GAUGE = ITEMS.register("euler_gauge") { PanelBlockItem(PanelRegistry::getEulerPanel, Item.Properties()) }
 
     fun register() {
         TABS.register()

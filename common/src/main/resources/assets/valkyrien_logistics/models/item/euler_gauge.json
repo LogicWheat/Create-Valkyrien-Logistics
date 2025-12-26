@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/factory_gauge/item",
+  "textures": {
+    "0": "valkyrien_logistics:block/euler_panel",
+    "particle": "valkyrien_logistics:block/euler_panel"
+  }
+}

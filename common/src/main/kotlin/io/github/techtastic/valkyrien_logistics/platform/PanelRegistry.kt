@@ -40,4 +40,10 @@ object PanelRegistry {
     fun getSlugPanel(): PanelType<SlugPanelBehaviour> {
         throw AssertionError()
     }
+
+    @ExpectPlatform
+    @JvmStatic
+    fun getEulerPanel(): PanelType<EulerPanelBehaviour> {
+        throw AssertionError()
+    }
 }

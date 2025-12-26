@@ -15,6 +15,7 @@ object PanelRegistryImpl {
     val ROTATION = PANELS.register("rotation") { PanelType(::QuaternionPanelBehaviour, QuaternionPanelBehaviour::class.java) }
     val MASS = PANELS.register("mass") { PanelType(::MassPanelBehaviour, MassPanelBehaviour::class.java) }
     val SLUG = PANELS.register("slug") { PanelType(::SlugPanelBehaviour, SlugPanelBehaviour::class.java) }
+    val EULER = PANELS.register("euler") { PanelType(::EulerPanelBehaviour, EulerPanelBehaviour::class.java) }
 
     fun register() {
         PANELS.register()
@@ -37,4 +38,7 @@ object PanelRegistryImpl {
 
     @JvmStatic
     fun getSlugPanel() = SLUG.get()
+
+    @JvmStatic
+    fun getEulerPanel() = EULER.get()
 }

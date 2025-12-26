@@ -14,5 +14,6 @@
   "item.valkyrien_logistics.angular_velocity_gauge": "Angular Velocity Gauge",
   "item.valkyrien_logistics.rotation_gauge": "Rotation Gauge",
   "item.valkyrien_logistics.mass_gauge": "Mass Gauge",
-  "item.valkyrien_logistics.slug_gauge": "Slug Gauge"
+  "item.valkyrien_logistics.slug_gauge": "Slug Gauge",
+  "item.valkyrien_logistics.euler_gauge": "Euler Angles Gauge"
 }

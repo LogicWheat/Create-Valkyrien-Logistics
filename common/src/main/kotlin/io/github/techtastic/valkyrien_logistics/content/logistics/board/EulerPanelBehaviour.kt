@@ -7,22 +7,17 @@ import io.github.techtastic.valkyrien_logistics.registry.VLItems
 import io.github.techtastic.valkyrien_logistics.registry.VLPartialModels
 import net.liukrast.eg.api.registry.PanelType
 import net.minecraft.world.item.Item
+import org.joml.Quaterniond
 import org.joml.Vector3d
 import org.joml.Vector3dc
 import org.valkyrienskies.mod.common.getShipManagingPos
 
-class AngularVelocityPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot):
-    Vector3PanelBehaviour(type, be, slot) {
+class EulerPanelBehaviour(type: PanelType<*>, be: FactoryPanelBlockEntity, slot: FactoryPanelBlock.PanelSlot): Vector3PanelBehaviour(type, be, slot) {
+    override fun getVector(): Vector3dc = (world.getShipManagingPos(pos)?.transform?.shipToWorldRotation ?: Quaterniond()).getEulerAnglesYXZ(Vector3d())
 
-    init {
-        this.onlyActiveWhen { world.getShipManagingPos(pos) != null }
-    }
-
-    override fun getVector(): Vector3dc = world.getShipManagingPos(pos)?.angularVelocity ?: Vector3d()
-
-    override fun getItem(): Item = VLItems.ANGULAR_VELOCITY_GAUGE.get()
+    override fun getItem(): Item = VLItems.EULER_GAUGE.get()
 
     override fun getModel(panelState: FactoryPanelBlock.PanelState, panelType: FactoryPanelBlock.PanelType): PartialModel =
-        VLPartialModels.ANGULAR_VELOCITY_PANEL
+        VLPartialModels.EULER_PANEL
 }
 
